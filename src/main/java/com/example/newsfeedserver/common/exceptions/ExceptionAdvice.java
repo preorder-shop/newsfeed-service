@@ -1,7 +1,7 @@
 package com.example.newsfeedserver.common.exceptions;
 
-import com.example.activityserver.common.response.BaseResponse;
-import com.example.activityserver.common.response.BaseResponseStatus;
+import com.example.newsfeedserver.common.response.BaseResponse;
+import com.example.newsfeedserver.common.response.BaseResponseStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

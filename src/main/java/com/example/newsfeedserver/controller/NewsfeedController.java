@@ -2,6 +2,7 @@ package com.example.newsfeedserver.controller;
 
 import static com.example.newsfeedserver.common.response.BaseResponseStatus.INVALID_REQUEST_PARAMETER;
 
+import com.example.newsfeedserver.client.ActivityServiceClient;
 import com.example.newsfeedserver.common.exceptions.BaseException;
 import com.example.newsfeedserver.common.response.BaseResponse;
 import com.example.newsfeedserver.domain.dto.request.GetNewsFeedReq;
@@ -25,6 +26,7 @@ public class NewsfeedController {
 
 
     private final NewsfeedService newsfeedService;
+    private final ActivityServiceClient activityServiceClient;
 
     /**
      * 포스트 리스트 조회 API
@@ -35,6 +37,7 @@ public class NewsfeedController {
             @RequestParam(name = "sort", defaultValue = "date") String sort, // 날짜순 or 인기순
             @RequestParam(name = "startPage", defaultValue = "0") int startPage) { // 시작 페이지
 
+        log.info("NewsfeedService NewsfeedController getPostListByCondition start");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String userId = auth.getName();
 
@@ -52,9 +55,10 @@ public class NewsfeedController {
         }
 
         GetNewsFeedReq getNewsFeedReq = new GetNewsFeedReq(userId, type, sort, startPage);
-        List<NewsFeedDto> feedList = newsfeedService.getPostListByCondition(getNewsFeedReq);
+     //   List<NewsFeedDto> feedList = newsfeedService.getPostListByCondition(getNewsFeedReq);
+        List<NewsFeedDto> newsfeedList = activityServiceClient.getPostListByCondition(getNewsFeedReq);
 
-        return new BaseResponse<>(feedList);
+        return new BaseResponse<>(newsfeedList);
     }
 
     /**

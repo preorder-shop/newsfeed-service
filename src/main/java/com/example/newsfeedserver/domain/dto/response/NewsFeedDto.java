@@ -10,8 +10,8 @@ import lombok.Setter;
 @Getter @Setter
 public class NewsFeedDto {
 
-    private Long id; // pk
+    private Long postId;
+    private String writer; // 글 쓴 사람
     private String title;
     private String content;
-    private String writer;
 }

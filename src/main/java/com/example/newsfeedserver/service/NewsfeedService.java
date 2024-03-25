@@ -10,6 +10,10 @@ import com.example.newsfeedserver.repository.NewsfeedRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -19,15 +23,6 @@ public class NewsfeedService {
 
     private final ActivityServiceClient activityServiceClient;
     private final NewsfeedRepository newsfeedRepository;
-
-
-    public List<NewsFeedDto> getPostListByCondition(GetNewsFeedReq getNewsFeedReq){
-
-
-
-        return null;
-
-    }
 
     public void createNewsfeed(NewsfeedCreateReq req) {
 

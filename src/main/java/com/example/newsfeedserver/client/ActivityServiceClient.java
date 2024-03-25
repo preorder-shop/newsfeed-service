@@ -9,19 +9,19 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "activity")
+@FeignClient(name = "activityServer")
 public interface ActivityServiceClient {
 
-    @PostMapping("/activity/internal/newsfeed/post")
+    @PostMapping("/internal/activity/post")
     List<NewsFeedDto> getPostListByCondition(@RequestBody GetNewsFeedReq getNewsFeedReq);
 
-    @PostMapping("/activity/internal/newsfeed/my-following")
-    List<UserLogDto> getMyFollowingActivity(@RequestBody String userId);
-
-    @PostMapping("/activity/internal/newsfeed/my-follower")
-    List<UserLogDto> getMyFollowerActivity(@RequestBody String userId);
-
-    @PostMapping("/activity/internal/newsfeed/my-post-alarm")
-    List<MyPostAlarm> getMyPostAlarm(@RequestBody String userId);
+//    @PostMapping("/internal/activity/newsfeed/my-following")
+//    List<UserLogDto> getMyFollowingActivity(@RequestBody String userId);
+//
+//    @PostMapping("/activity/internal/newsfeed/my-follower")
+//    List<UserLogDto> getMyFollowerActivity(@RequestBody String userId);
+//
+//    @PostMapping("/activity/internal/newsfeed/my-post-alarm")
+//    List<MyPostAlarm> getMyPostAlarm(@RequestBody String userId);
 
 }
